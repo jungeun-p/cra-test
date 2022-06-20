@@ -1,39 +1,41 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-// import data from './data.json';
+import React, { useState } from 'react';
 
 function App() {
-  // const onClick = () => {
-  //   // console.log(data.name);
-  //   import('./data.json').then(({default: data})=>{
-  //     console.log(data.name);
-  //   })
-  // }
+  const [todoList, setTodoList] = useState([]);
+  const [currentId, setCurrentId] = useState(1);
+  const [desc, setDesc] = useState('');
+  const [odd, setOdd] = useState(false);
+  function onAdd(){
+    const todo = { id: currentId, desc };
+    setCurrentId(currentId + 1);
+    setTodoList([...todoList, todo]);
+  };
+  function onSaveToServer(){};
+  function onDelete(e){
+    const id = Number(e.target.dataset.id);
+    const newTodoList = todoList.filter((todo)=> todo.id !== id);
+    setTodoList(newTodoList);
+  };
   return (
-    <BrowserRouter>
-      <Link to=".">Home</Link>
-      <br />
-      <Link to="photo">Photo</Link>
-      <br />
-      <Link to="room">Room</Link>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/photo" element={<Photo/>} />
-        <Route path="/room" element={<Room/>} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <h3>To do List</h3>
+      <ul>
+        {todoList
+        .filter((_, index) => (odd ? index % 2 === 0 : true))
+        .map((todo, index) => (
+          <li key={todo.id}>
+            <span>{todo.desc}</span>
+            <span>{index}</span>
+            <button data-id={todo.id} onClick={onDelete}>delete</button>
+          </li>
+        ))}
+      </ul>
+      <input type="text" value={desc} onChange={e => setDesc(e.target.value)} />
+      <button onClick={onAdd}>Add</button>
+      <button onClick={() => setOdd(!odd)}>Show odd</button>
+      <button onClick={onSaveToServer}>Add to server</button>
+    </div>
   );
-}
-
-function Home(){
-  return <h2>This is Home. Click button</h2>
-}
-
-function Photo(){
-  return <h2>This is Photo</h2>
-}
-
-function Room(){
-  return <h2>This is Room</h2>
 }
 
 export default App;

@@ -29,6 +29,13 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <!-- <div class="todo">
+      <h3>To Do List</h3>
+      <ul class="list"></ul>
+      <input type="text" class="desc" />
+      <button onclick="onAdd()">Add</button>
+      <button onclick="onSaveToServer()">Add to server</button>
+    </div> -->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +46,44 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- <script>
+      let currentId = 1;
+      const todoList =[];
+      function onAdd(){
+        const descElement = document.querySelector(".todo .desc");
+        const todo = {id: currentId++, desc: descElement.value};
+        todoList.push(todo);
+        const listElement = document.querySelector(".todo .list");
+        const todoEl = makeTodoElement(todo);
+        listElement.appendChild(todoEl);
+      }
+
+      function makeTodoElement(todo){
+        const todoElement = document.createElement("li");
+        const spanElement = document.createElement("span");
+        const buttonElement = document.createElement("button");
+        spanElement.innerHTML = todo.desc;
+        buttonElement.innerHTML = 'delete';
+        buttonElement.dataset.id = todo.id;
+        buttonElement.onclick = onDelete;
+        todoElement.appendChild(spanElement);
+        todoElement.appendChild(buttonElement);
+        return todoElement;
+      }
+
+      function onDelete(e){
+        const id = Number(e.target.dataset.id);
+        const index = todoList.findIndex(item => item.id === id);
+        if(id >= 0){
+          todoList.splice(index, 1);
+          const listElement = document.querySelector(".todo .list");
+          const todoElement = e.target.parentNode; // button의 parentNode
+          listElement.removeChild(todoElement);
+        }
+      }
+      function onSaveToServer(){
+        // todoList를 서버로 전송한다. 
+      }
+    </script> -->
   </body>
 </html>
