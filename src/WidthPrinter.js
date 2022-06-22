@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import useWindowWith from './useWindowWith';
 
 const WidthPrinter = () => {
-    const [width, setWidth] = useState(window.innerWidth);
-    useEffect(() => {
-        const onResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', onResize);
-        console.log('useEffect1');
-        return () => {
-            window.removeEventListener('resize', onResize);
-            console.log('useEffect2');
-        }
-    }, []);
+    const width = useWindowWith();
     return (
         <div>
            {`${width}`} 

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import useUser from './useUser';
 
-const Profile = ({userId}) => {
-    const [user, setUser] = useState(null);
-    const value = userId + 10; 
-    useEffect(()=>{
-        console.log(value);
-        getUserApi(userId).then(data=>setUser(data));
-    }, [userId, value]);
+const Profile = ({ userId }) => {
+    // const [user, setUser] = useState(null);
+    // useEffect(()=>{
+    //     getUserApi(userId).then(data=>setUser(data));
+    // }, [userId]);
+    const user = useUser(userId);
     return (
         <div>
             {!user && <p>loading...</p>}
@@ -19,15 +19,5 @@ const Profile = ({userId}) => {
         </div>
     );
 };
-
-const USER1 = { name: 'mike', age: 23 };
-const USER2 = { name: 'jane', age: 31 };
-function getUserApi(userId){ // 외부 함수
-    return new Promise(res => {
-        setTimeout(()=>{
-            res(userId % 2 ? USER1 : USER2);
-        }, 500);
-    })
-}
 
 export default Profile;

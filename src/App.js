@@ -15,10 +15,10 @@ const App = () => {
     <div>
       {count === 0 && <WidthPrinter />}
       <button onClick={() => setCount(count + 1)}>Add</button>
-      {/* <Profile userId={userId}/>
+      <Profile userId={userId}/>
       <button onClick={()=>setUserId(userId + 1)}>userId change</button>
-      <br />
-      <button onClick={() => setState({...state, count:state.count+1})}>increase</button>
+      {/* <br /> */}
+      {/* <button onClick={() => setState({...state, count:state.count+1})}>increase</button>
       <p>{`name is ${state.name}`}</p>
       <p>{`age is ${state.age}`}</p>
       <input 
