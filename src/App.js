@@ -1,38 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import Counter from './Counter';
-import Profile from './Profile';
-import WidthPrinter from './WidthPrinter';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+// import Profile from './Profile';
+
+// const UserContext = createContext('unknown');
+// const ThemeContext = createContext('dark');
+
+const UserContext = createContext({ username: 'unknown', helloCount: 0 });
+const SetUserContext = createContext(()=>{});
 
 const App = () => {
-  const [state, setState] = useState({ name: '', age: 0, count: 0 });
-  const [userId, setUserId] = useState(0);
-  const [count, setCount] = useState(0);
-  // useEffect(()=>{
-  //   document.title = `update time: ${state.count}`;
-  // })
+  const [user, setUser] = useState({ username: 'mike', helloCount: 0 });
   return (
-    <div>
-      {count === 0 && <WidthPrinter />}
-      <button onClick={() => setCount(count + 1)}>Add</button>
-      <Profile userId={userId}/>
-      <button onClick={()=>setUserId(userId + 1)}>userId change</button>
-      {/* <br /> */}
-      {/* <button onClick={() => setState({...state, count:state.count+1})}>increase</button>
-      <p>{`name is ${state.name}`}</p>
-      <p>{`age is ${state.age}`}</p>
-      <input 
-        type="text"
-        value={state.name}
-        onChange={e=>setState({...state, name:e.target.value})}
-      />
-      <input 
-        type="text"
-        value={state.age}
-        onChange={e=>setState({...state, age:e.target.value})}
-      /> */}
-    </div>
+    <SetUserContext.Provider value={setUser}>
+      <UserContext.Provider value={user}>
+        <Profile />
+      </UserContext.Provider>
+    </SetUserContext.Provider>
   )
 };
+
+const Profile = () => {
+  const setUser = useContext(SetUserContext);
+  const { username, helloCount } = useContext(UserContext);
+  return (
+      <>
+          <p>{`hi, ${username}`}</p>
+          <p>{`helloCount ${helloCount}`}</p>
+          <button onClick={()=>setUser({username, helloCount: helloCount + 1})}>
+              hi
+          </button>
+      </>
+  );
+};
+
+// const Profile = React.memo(() => {
+//   console.log('Profile Component');
+//   // const [user, setUser] = useState(null);
+//   // useEffect(()=>{
+//   //     getUserApi(userId).then(data=>setUser(data));
+//   // }, [userId]);
+//   // const user = useUser(userId);
+//   return (
+//       <div>
+//           <Greeting />
+//           {/* ... */}
+//       </div>
+//   );
+// });
+
+// function Greeting(){
+//   // const username = useContext(UserContext);
+//   // const theme = useContext(ThemeContext);
+//   return (
+//     // <p style={{ color: theme === 'dark' ? 'gray' : 'green' }}>{`Hi, ${username}!`}</p>
+//     // <UserContext.Consumer>
+//     //   {username => <p>{`Hi, ${username}!`}</p>}
+//     // </UserContext.Consumer>
+//   )
+// }
 
 export default App;

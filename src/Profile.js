@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import useUser from './useUser';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const Profile = ({ userId }) => {
-    // const [user, setUser] = useState(null);
-    // useEffect(()=>{
-    //     getUserApi(userId).then(data=>setUser(data));
-    // }, [userId]);
-    const user = useUser(userId);
+const Profile = () => {
+    // const setUser = useContext(SetUserContext);
+    // const { username, helloCount } = useContext(UserContext);
     return (
-        <div>
-            {!user && <p>loading...</p>}
-            {user && (
-                <>
-                    <p>{`name: ${user.name}`}</p>
-                    <p>{`age: ${user.age}`}</p>
-                </>
-            )}
-        </div>
+        // <>
+        //     <p>{`hi, ${username}`}</p>
+        //     <p>{`helloCount ${helloCount}`}</p>
+        //     <button onClick={()=>setUser({username, helloCount: helloCount + 1})}>
+        //         hi
+        //     </button>
+        // </>
     );
-};
+// };
 
 export default Profile;
