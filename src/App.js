@@ -7,6 +7,7 @@ import Conditional from './6-ref/5-conditional';
 import UseRefComponent from './7-basic-hooks/1-1-useRef';
 import UseMemoComponent from './7-basic-hooks/1-2-useMemo';
 import UseCallbackComponent from './7-basic-hooks/1-3-useCallback';
+import UseReducerComponent from './7-basic-hooks/2-1-useReducer';
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
     {/* <Conditional /> */}
     {/* <UseRefComponent /> */}
     {/* <UseMemoComponent /> */}
-    <UseCallbackComponent />
+    {/* <UseCallbackComponent /> */}
+    <UseReducerComponent />
     </>
   )
 };
