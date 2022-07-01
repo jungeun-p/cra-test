@@ -12,6 +12,7 @@ import UseCallbackComponent from './7-basic-hooks/1-3-useCallback';
 import UseReducerComponent from './7-basic-hooks/2-1-useReducer';
 import UseImperativeHandle from './7-basic-hooks/3-1-useImperativeHandle';
 import UseDebugValue, { STATE_RUNNING, STATE_START } from './7-basic-hooks/5-1-useDebugValue';
+import User from './8-use-react/3-1-no-propsTypes';
 
 const App = () => {
   // const profileRef = useRef(); // 자식 컴포넌트에서 반환한 값을 참조
@@ -22,13 +23,13 @@ const App = () => {
   //     profileRef.current.addAge(5);
   //   }
   // }
-  const [state, next] = UseDebugValue(true);
-  const msg = 
-    state === STATE_START 
-    ? 'app start'
-    : state === STATE_RUNNING
-    ? 'app start'
-    : 'app finish';
+  // const [state, next] = UseDebugValue(true);
+  // const msg = 
+  //   state === STATE_START 
+  //   ? 'app start'
+  //   : state === STATE_RUNNING
+  //   ? 'app start'
+  //   : 'app finish';
   return (
     <>
     {/* <RefElement /> */}
@@ -43,8 +44,9 @@ const App = () => {
     {/* <UseImperativeHandle ref={profileRef} />
     <button onClick={onClick}>add age 5</button> */}
     {/* <UseLayoutEffect /> */}
-    <p>{msg}</p>
-    <button onClick={next}>next</button>
+    {/* <p>{msg}</p>
+    <button onClick={next}>next</button> */}
+    <User onChangeTitle={()=>{}} male={true} type={'gold'} age={15}/>
     </>
   )
 };
