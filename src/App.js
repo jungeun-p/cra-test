@@ -14,8 +14,11 @@ import UseImperativeHandle from './7-basic-hooks/3-1-useImperativeHandle';
 import UseDebugValue, { STATE_RUNNING, STATE_START } from './7-basic-hooks/5-1-useDebugValue';
 import User from './8-use-react/3-1-no-propsTypes';
 import FriendPage from './10-structure/container/FriendPage';
+import UseContextComponent from './12-redux/1-core';
+import { applyMiddleware, createStore } from 'redux';
 
 const App = () => {
+
   // const profileRef = useRef(); // 자식 컴포넌트에서 반환한 값을 참조
   // const onClick = () => {
   //   if(profileRef.current) {
@@ -48,7 +51,8 @@ const App = () => {
     {/* <p>{msg}</p>
     <button onClick={next}>next</button> */}
     {/* <User onChangeTitle={()=>{}} male={true} type={'gold'} age={15}/> */}
-    <FriendPage />
+    {/* <FriendPage /> */}
+    {/* <UseContextComponent /> */}
     </>
   )
 };
