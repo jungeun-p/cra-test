@@ -16,6 +16,7 @@ import User from './8-use-react/3-1-no-propsTypes';
 import FriendPage from './10-structure/container/FriendPage';
 import UseContextComponent from './12-redux/1-core';
 import { applyMiddleware, createStore } from 'redux';
+import ImmerComponent from './12-redux/4-1-immer';
 
 const App = () => {
 
@@ -53,6 +54,7 @@ const App = () => {
     {/* <User onChangeTitle={()=>{}} male={true} type={'gold'} age={15}/> */}
     {/* <FriendPage /> */}
     {/* <UseContextComponent /> */}
+    <ImmerComponent />
     </>
   )
 };
