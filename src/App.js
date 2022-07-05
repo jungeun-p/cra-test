@@ -22,6 +22,7 @@ import { addTimeline } from './timeline/state';
 import { addFriend, editFriend, removeFriend } from './friend/state';
 import FriendMain from './friend/container/FriendMain';
 import TimelineMain from './timeline/container/TimelineMain';
+import { Provider } from 'react-redux';
 
 const App = () => {
   // store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
@@ -65,8 +66,10 @@ const App = () => {
     {/* <FriendPage /> */}
     {/* <UseContextComponent /> */}
     {/* <ImmerComponent /> */}
-    <FriendMain />
-    <TimelineMain />
+    <Provider store={store}>
+      <FriendMain />
+      <TimelineMain />
+    </Provider>
     </>
   )
 };
