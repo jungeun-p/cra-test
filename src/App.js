@@ -20,14 +20,16 @@ import ImmerComponent from './12-redux/4-1-immer';
 import store from './common/store';
 import { addTimeline } from './timeline/state';
 import { addFriend, editFriend, removeFriend } from './friend/state';
+import FriendMain from './friend/container/FriendMain';
+import TimelineMain from './timeline/container/TimelineMain';
 
 const App = () => {
-  store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
-  store.dispatch(addTimeline({id:2, desc:'like redux'}));
-  store.dispatch(addFriend({ id: 1, name: "a" }));
-  store.dispatch(addFriend({ id: 2, name: "b" }));
-  store.dispatch(editFriend({ id: 2, name: "b" }));
-  store.dispatch(removeFriend({ id: 1, name: "d" }));
+  // store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
+  // store.dispatch(addTimeline({id:2, desc:'like redux'}));
+  // store.dispatch(addFriend({ id: 1, name: "a" }));
+  // store.dispatch(addFriend({ id: 2, name: "b" }));
+  // store.dispatch(editFriend({ id: 2, name: "b" }));
+  // store.dispatch(removeFriend({ id: 1, name: "d" }));
   // const profileRef = useRef(); // 자식 컴포넌트에서 반환한 값을 참조
   // const onClick = () => {
   //   if(profileRef.current) {
@@ -63,7 +65,8 @@ const App = () => {
     {/* <FriendPage /> */}
     {/* <UseContextComponent /> */}
     {/* <ImmerComponent /> */}
-
+    <FriendMain />
+    <TimelineMain />
     </>
   )
 };
