@@ -17,9 +17,17 @@ import FriendPage from './10-structure/container/FriendPage';
 import UseContextComponent from './12-redux/1-core';
 import { applyMiddleware, createStore } from 'redux';
 import ImmerComponent from './12-redux/4-1-immer';
+import store from './common/store';
+import { addTimeline } from './timeline/state';
+import { addFriend, editFriend, removeFriend } from './friend/state';
 
 const App = () => {
-
+  store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
+  store.dispatch(addTimeline({id:2, desc:'like redux'}));
+  store.dispatch(addFriend({ id: 1, name: "a" }));
+  store.dispatch(addFriend({ id: 2, name: "b" }));
+  store.dispatch(editFriend({ id: 2, name: "b" }));
+  store.dispatch(removeFriend({ id: 1, name: "d" }));
   // const profileRef = useRef(); // 자식 컴포넌트에서 반환한 값을 참조
   // const onClick = () => {
   //   if(profileRef.current) {
@@ -54,7 +62,8 @@ const App = () => {
     {/* <User onChangeTitle={()=>{}} male={true} type={'gold'} age={15}/> */}
     {/* <FriendPage /> */}
     {/* <UseContextComponent /> */}
-    <ImmerComponent />
+    {/* <ImmerComponent /> */}
+
     </>
   )
 };
