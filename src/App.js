@@ -18,11 +18,12 @@ import UseContextComponent from './12-redux/1-core';
 import { applyMiddleware, createStore } from 'redux';
 import ImmerComponent from './12-redux/4-1-immer';
 import store from './common/store';
-import { addTimeline } from './timeline/state';
-import { addFriend, editFriend, removeFriend } from './friend/state';
+// import { addTimeline } from './timeline/state';
+// import { addFriend, editFriend, removeFriend } from './friend/state';
 import FriendMain from './friend/container/FriendMain';
 import TimelineMain from './timeline/container/TimelineMain';
 import { Provider } from 'react-redux';
+import Search from './project/search/container/Search';
 
 const App = () => {
   // store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
@@ -66,10 +67,11 @@ const App = () => {
     {/* <FriendPage /> */}
     {/* <UseContextComponent /> */}
     {/* <ImmerComponent /> */}
-    <Provider store={store}>
+    {/* <Provider store={store}>
       <FriendMain />
       <TimelineMain />
-    </Provider>
+    </Provider> */}
+    <Search />
     </>
   )
 };
