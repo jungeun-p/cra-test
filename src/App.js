@@ -24,6 +24,7 @@ import FriendMain from './friend/container/FriendMain';
 import TimelineMain from './timeline/container/TimelineMain';
 import { Provider } from 'react-redux';
 import Search from './project/search/container/Search';
+import 'antd/dist/antd.css';
 
 const App = () => {
   // store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
