@@ -1,4 +1,4 @@
-import { createReducer } from '../../common/redux-helper';
+import { createReducer, createSetValueAction, setValueReducer } from '../../common/redux-helper';
 
 // action type
 
@@ -9,7 +9,9 @@ export const types = {
     INCREASE_NEXT_PAGE: 'timeline/INCREASE_NEXT_PAGE',
     REQUEST_LIKE: 'timeline/REQUEST_LIKE',
     ADD_LIKE: 'timeline/ADD_LIKE',
-    SET_LOADING: 'timeline/SET_LOADING'
+    SET_LOADING: 'timeline/SET_LOADING',
+    SET_VALUE: 'timeline/SET_VALUE',
+    TRY_SET_TEXT: 'timeline/TRY_SET_TEXT',
 };
 
 // action creator function
@@ -24,9 +26,14 @@ export const actions = {
         type: types.SET_LOADING,
         isLoading,
     }),
+    setValue: createSetValueAction(types.SET_VALUE),
+    trySetText: (text) => ({
+        type: types.TRY_SET_TEXT,
+        text
+    }),
 }
 
-const INITIAL_STATE = { timelines: [], nextPage: 0, isLoading: false };
+const INITIAL_STATE = { timelines: [], nextPage: 0, isLoading: false, error: '', text: '', };
 
 // reducer
 const reducer = createReducer(INITIAL_STATE, {
@@ -53,6 +60,7 @@ const reducer = createReducer(INITIAL_STATE, {
         }
     },
     [types.SET_LOADING]: (state, action) => (state.isLoading = action.isLoading),
+    [types.SET_VALUE]: setValueReducer,
 })
 
 export default reducer;
