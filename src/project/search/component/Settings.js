@@ -5,9 +5,7 @@ import { SettingFilled } from '@ant-design/icons';
 const Settings = ({ logout }) => {
     return (
         <Dropdown 
-            overlay={
-            <Menu items={[{ label: 'Logout', key: '0' }]} onClick={logout} />
-        } 
+            overlay={<Menu onClick={logout} items={[{ label: 'Logout', key: 0 }]}/>} 
             trigger={['click']}
             placement="bottomRight"
         >
