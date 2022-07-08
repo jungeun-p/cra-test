@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Title from './Title';
+import Title from '../Title';
 
 const Counter = () => {
     const [count, setCount] = useState({ value:0 });
