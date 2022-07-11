@@ -12,7 +12,7 @@ import UseCallbackComponent from './7-basic-hooks/1-3-useCallback';
 import UseReducerComponent from './7-basic-hooks/2-1-useReducer';
 import UseImperativeHandle from './7-basic-hooks/3-1-useImperativeHandle';
 import UseDebugValue, { STATE_RUNNING, STATE_START } from './7-basic-hooks/5-1-useDebugValue';
-import User from './8-use-react/3-1-no-propsTypes';
+// import User from './8-use-react/3-1-no-propsTypes';
 import FriendPage from './10-structure/container/FriendPage';
 import UseContextComponent from './12-redux/1-core';
 import { applyMiddleware, createStore } from 'redux';
@@ -24,7 +24,9 @@ import FriendMain from './friend/container/FriendMain';
 import TimelineMain from './timeline/container/TimelineMain';
 import { Provider } from 'react-redux';
 import Search from './project/search/container/Search';
+import User from './project/user/container/User';
 import 'antd/dist/antd.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const App = () => {
   // store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
@@ -72,7 +74,13 @@ const App = () => {
       <FriendMain />
       <TimelineMain />
     </Provider> */}
-    <Search />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<Search />} />
+        <Route path=":name" element={<User />} />
+      </Routes>
+    </BrowserRouter>
+    {/* <Route path="/user:name" component={User} /> */}
     </>
   )
 };

@@ -13,5 +13,7 @@ function* fetchAutoComplete({ keyword }){
 }
 
 export default function*(){
-    yield all([takeEvery(Types.FETCH_AUTO_COMPLETE, fetchAutoComplete)]);
+    yield all([
+        takeEvery(Types.FETCH_AUTO_COMPLETE, fetchAutoComplete)
+    ]);
 }

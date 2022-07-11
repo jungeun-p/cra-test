@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './project/common/store';
+import { BrowserRouter } from 'react-router-dom';
 
 // function App(){
 //   const [pageName, setPageName] = useState('');
@@ -51,7 +52,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+        <App />
     </Provider>
   </React.StrictMode>
 );

@@ -14,11 +14,11 @@ export function createReducer(initialState, handlerMap){
         }
     }
 }
-// action
+// action function
 export function createSetValueAction(type){
     return (key, value) => ({ type, key, value });
 }
-// reducer(단순 할당)
+// reducer function (단순 할당)
 export function setValueReducer(state, action){
     state[action.key] = action.value; 
 }
