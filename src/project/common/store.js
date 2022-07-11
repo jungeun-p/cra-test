@@ -5,10 +5,12 @@ import searchReducer from '../search/state';
 import userReducer from '../user/state';
 import searchSaga from '../search/state/saga';
 import userSaga from '../user/state/saga';
+import commonReducer from '../common/state'
 
 const reducer = combineReducers({
     search: searchReducer,
     user: userReducer,
+    common: commonReducer,
 });
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

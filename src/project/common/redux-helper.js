@@ -22,3 +22,6 @@ export function createSetValueAction(type){
 export function setValueReducer(state, action){
     state[action.key] = action.value; 
 }
+
+export const FETCH_PAGE = Symbol('FETCH_PAGE'); // Symbol을 이용한 이름 충돌 방지
+export const FETCH_KEY = Symbol('FETCH_KEY');
