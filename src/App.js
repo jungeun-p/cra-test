@@ -1,4 +1,4 @@
-import React, { useDebugValue, useRef } from 'react';
+import React, { useDebugValue, useEffect, useRef } from 'react';
 import { useImperativeHandle } from 'react';
 import UseLayoutEffect from './7-basic-hooks/4-1-useLayoutEffect';
 import RefElement from './6-ref/1-elements';
@@ -29,6 +29,12 @@ import 'antd/dist/antd.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const App = () => {
+  // loading element 마운트시 제거 
+  useEffect(() => {
+    const bodyEl = document.getElementsByTagName('body')[0];
+    const loadingEl = document.getElementById('init-loading');
+    loadingEl && bodyEl.removeChild(loadingEl);
+  }, []);
   // store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
   // store.dispatch(addTimeline({id:2, desc:'like redux'}));
   // store.dispatch(addFriend({ id: 1, name: "a" }));
