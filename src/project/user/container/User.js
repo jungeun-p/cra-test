@@ -2,8 +2,11 @@ import { Col, Descriptions, PageHeader, Row, Space, Spin, Typography } from 'ant
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import History from '../../common/component/History';
 import useFetchInfo from '../../common/hook/useFetchInfo';
 import { actions, Types } from '../state';
+import Department from './Department';
+import TagList from './TagList';
 
 const User = () => {
     const navigate = useNavigate();
@@ -26,7 +29,7 @@ const User = () => {
                     onBack={()=> navigate(-1)}
                     title={<Space>
                         user info
-                        {isSlow && <Spin size="small"/ >}
+                         {isSlow && <Spin size="small"/ >}
                     </Space>}
                 >
                     {user && (
@@ -35,10 +38,16 @@ const User = () => {
                                 <Typography>{user.name}</Typography>
                             </Descriptions.Item>
                             <Descriptions.Item label="Department">
-                                {user.department}
+                                <Department />
                             </Descriptions.Item>
-                            <Descriptions.Item label="Tag">{user.tag}</Descriptions.Item>
-                            <Descriptions.Item label="Log">UpdateLog</Descriptions.Item>
+                            <Descriptions.Item label="Tag">
+                                {user.tag}
+                                <TagList />
+                            </Descriptions.Item>
+                            <Descriptions.Item label="Log">
+                                UpdateLog
+                                <History />
+                            </Descriptions.Item>
                         </Descriptions>
                     )}
                     {!user && isFetched && (
