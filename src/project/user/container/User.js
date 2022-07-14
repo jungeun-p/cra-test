@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import History from '../../common/component/History';
 import useFetchInfo from '../../common/hook/useFetchInfo';
+import FetchLabel from '../component/FetchLabel';
 import { actions, Types } from '../state';
 import Department from './Department';
 import TagList from './TagList';
@@ -27,21 +28,39 @@ const User = () => {
             <Col xs={24} lg={14}>
                 <PageHeader
                     onBack={()=> navigate(-1)}
-                    title={<Space>
-                        user info
-                         {isSlow && <Spin size="small"/ >}
-                    </Space>}
+                    title={
+                    <FetchLabel label="사용자 정보" actionType={Types.FETCH_USER} />
+                    // <Space>
+                    //     user info
+                    //      {isSlow && <Spin size="small"/ >}
+                    // </Space>
+                    }
                 >
                     {user && (
                         <Descriptions layout="vertical" bordered column={1}>
                             <Descriptions.Item label="Name">
                                 <Typography>{user.name}</Typography>
                             </Descriptions.Item>
-                            <Descriptions.Item label="Department">
-                                <Department />
+                            <Descriptions.Item 
+                                label={
+                                    <FetchLabel 
+                                        label="department" 
+                                        actionType={Types.FETCH_UPDATE_USER} 
+                                        fetchKey="department" 
+                                    />
+                                }
+                            >
+                            <Department />
                             </Descriptions.Item>
-                            <Descriptions.Item label="Tag">
-                                {user.tag}
+                            <Descriptions.Item 
+                                label={
+                                    <FetchLabel 
+                                        label="tag" 
+                                        actionType={Types.FETCH_UPDATE_USER} 
+                                        fetchKey="tag" 
+                                    />
+                                }
+                            >
                                 <TagList />
                             </Descriptions.Item>
                             <Descriptions.Item label="Log">
