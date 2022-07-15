@@ -14,10 +14,12 @@ const User = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user);
     const { name } = useParams();
+    const { userHistory } = useSelector(state => state.user);
     
     useEffect(()=>{
         // API로 사용자 정보 가져오기 
         dispatch(actions.fetchUser(name));
+        dispatch(actions.fetchUserHistory(name));
     }, [dispatch, name])
 
     // const isFetched = true;
@@ -64,8 +66,7 @@ const User = () => {
                                 <TagList />
                             </Descriptions.Item>
                             <Descriptions.Item label="Log">
-                                UpdateLog
-                                <History />
+                                <History items={userHistory}/>
                             </Descriptions.Item>
                         </Descriptions>
                     )}

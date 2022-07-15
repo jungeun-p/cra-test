@@ -26,10 +26,21 @@ function* fetchUpdateUser({ user, key, value }){
     if(isSuccess && data){
         // 저장된 캐시 지워주기 
         deleteApiCache();
+        // 반환된 History를 추가. 
+        yield put(actions.addHistory(data.history));
     } else {
         yield put(actions.setValue('user', user)); 
     }
+}
 
+function* fetchUserHistory({ name }){
+    const { isSuccess, data } = yield call(callApi, {
+        url:'/history',
+        params: { name },
+    });
+    if(isSuccess && data){
+        yield put(actions.setValue('userHistory', data));
+    }
 }
 
 export default function* (){
@@ -41,6 +52,11 @@ export default function* (){
         ),
         takeLeading(
             Types.FETCH_UPDATE_USER, 
-            makeFetchSaga({ fetchSaga: fetchUpdateUser, canCache: false }))
+            makeFetchSaga({ fetchSaga: fetchUpdateUser, canCache: false })
+        ),
+        takeLeading(
+            Types.FETCH_USER_HISTORY,
+            makeFetchSaga({ fetchSaga: fetchUserHistory, canCache: false })
+        ),
     ]);
 } 
