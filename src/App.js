@@ -27,6 +27,8 @@ import Search from './project/search/container/Search';
 import User from './project/user/container/User';
 import 'antd/dist/antd.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './project/auth/container/Login';
+import Signup from './project/auth/container/Signup';
 
 const App = () => {
   // loading element 마운트시 제거 
@@ -84,6 +86,8 @@ const App = () => {
       <Routes>
         <Route path="/*" element={<Search />} />
         <Route path=":name" element={<User />} />
+        <Route path="/login" element={<Login />}/>
+        <Route path="/signup" element={<Signup />}/>
       </Routes>
     </BrowserRouter>
     {/* <Route path="/user:name" component={User} /> */}
