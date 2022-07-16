@@ -5,9 +5,12 @@ import searchReducer from '../search/state';
 import userReducer from '../user/state';
 import searchSaga from '../search/state/saga';
 import userSaga from '../user/state/saga';
-import commonReducer from '../common/state'
+import authSaga from '../auth/state/saga';
+import commonReducer from '../common/state';
+import authReducer from '../auth/state';
 
 const reducer = combineReducers({
+    auth: authReducer,
     search: searchReducer,
     user: userReducer,
     common: commonReducer,
@@ -19,7 +22,7 @@ const store = createStore(
     composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 function* rootSaga(){
-    yield all([searchSaga(), userSaga()]);
+    yield all([searchSaga(), userSaga(), authSaga()]);
 }
 sagaMiddleware.run(rootSaga);
 
