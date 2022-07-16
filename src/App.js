@@ -22,13 +22,14 @@ import store from './common/store';
 // import { addFriend, editFriend, removeFriend } from './friend/state';
 import FriendMain from './friend/container/FriendMain';
 import TimelineMain from './timeline/container/TimelineMain';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import Search from './project/search/container/Search';
 import User from './project/user/container/User';
 import 'antd/dist/antd.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './project/auth/container/Login';
 import Signup from './project/auth/container/Signup';
+import { actions as authActions } from './project/auth/state';
 
 const App = () => {
   // loading element 마운트시 제거 
@@ -37,6 +38,12 @@ const App = () => {
     const loadingEl = document.getElementById('init-loading');
     loadingEl && bodyEl.removeChild(loadingEl);
   }, []);
+  
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(authActions.fetchUser())
+  }, [dispatch]);
+
   // store.dispatch(addTimeline({id:1, desc:'coding is joy'}));
   // store.dispatch(addTimeline({id:2, desc:'like redux'}));
   // store.dispatch(addFriend({ id: 1, name: "a" }));
