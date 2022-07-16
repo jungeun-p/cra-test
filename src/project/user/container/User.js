@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import History from '../../common/component/History';
 import useFetchInfo from '../../common/hook/useFetchInfo';
+import useNeedLogin from '../../common/hook/useNeedLogin';
 import FetchLabel from '../component/FetchLabel';
 import { actions, Types } from '../state';
 import Department from './Department';
 import TagList from './TagList';
 
 const User = () => {
+    useNeedLogin();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user);

@@ -2,18 +2,19 @@ import { Col, Row, Typography } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import History from '../../common/component/History';
+import useNeedLogin from '../../common/hook/useNeedLogin';
 import Settings from '../component/Settings';
 import { actions } from '../state';
 import SearchInput from './SearchInput';
 
 const Search = () => {
+    useNeedLogin();
     const { history } = useSelector(state => state.search);
     const dispatch = useDispatch();
     
     useEffect(()=>{
         dispatch(actions.fetchAllHistory());
     }, [dispatch])
-    
     return (
         <>
             <Row justify="end" style={{ padding: 20 }}>
