@@ -39,6 +39,16 @@ function* fetchUser(){
     }
 }
 
+function* fetchLogout() {
+    const { isSuccess } = yield call(callApi, {
+        url: '/auth/logout',
+    })
+
+    if(isSuccess){
+        yield put(actions.setUser(''));
+    }
+}
+
 export default function*(){
     yield all([
         takeLeading(
@@ -52,6 +62,10 @@ export default function*(){
         takeLeading(
             Types.FETCH_USER,
             makeFetchSaga({ fetchSaga: fetchUser, canCache: false }),
+        ),
+        takeLeading(
+            Types.FETCH_LOGOUT, 
+            makeFetchSaga({ fetchSaga: fetchLogout, canCache: false }),
         )
     ])
 }

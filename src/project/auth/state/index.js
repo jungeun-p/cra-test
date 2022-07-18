@@ -11,6 +11,7 @@ export const Types = {
     SET_USER: 'auth/SET_USER', // 로그인 완료 후 처리,
     FETCH_SIGNUP: 'auth/FETCH_SIGNUP',
     FETCH_USER: 'auth/FETCH_USER', // 로그인 유지
+    FETCH_LOGOUT: 'auth/FETCH_LOGOUT'
 }
 
 export const actions = {
@@ -30,6 +31,9 @@ export const actions = {
     }),
     fetchUser: () => ({
         type: Types.FETCH_USER,
+    }),
+    fetchLogout: () => ({
+        type: Types.FETCH_LOGOUT,
     }),
 }
 
