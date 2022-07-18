@@ -5,10 +5,14 @@ export function createReducer(initialState, handlerMap){
     return function(state=initialState, action){
         const handler = handlerMap[action.type];
         if(handler){
-            return produce(state, draft => {
-                const handler = handlerMap[action.type];
-                handler(draft, action);
-            })
+            if(action[NOT_IMMUTABLE]){
+                return handler(state, action); // handler 함수를 그대로 반환.
+            } else {
+                return produce(state, draft => {
+                    const handler = handlerMap[action.type];
+                    handler(draft, action);
+                })
+            }
         } else {
             return state;
         }
@@ -25,3 +29,4 @@ export function setValueReducer(state, action){
 
 export const FETCH_PAGE = Symbol('FETCH_PAGE'); // Symbol을 이용한 이름 충돌 방지
 export const FETCH_KEY = Symbol('FETCH_KEY');
+export const NOT_IMMUTABLE = Symbol('NOT_IMMUTABLE');

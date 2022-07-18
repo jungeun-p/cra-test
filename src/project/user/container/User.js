@@ -22,7 +22,13 @@ const User = () => {
         // API로 사용자 정보 가져오기 
         dispatch(actions.fetchUser(name));
         dispatch(actions.fetchUserHistory(name));
-    }, [dispatch, name])
+    }, [dispatch, name]);
+
+    useEffect(() => {
+        // component unmount시 실행
+        return () => dispatch(actions.initialize());
+        // user 페이지를 벗어날 때 상태값을 무조건 초기화. 
+    }, [dispatch]);
 
     // const isFetched = true;
     const { isFetched, isSlow } = useFetchInfo(Types.FETCH_USER);
@@ -31,7 +37,7 @@ const User = () => {
         <Row justify="center">
             <Col xs={24} lg={14}>
                 <PageHeader
-                    onBack={()=> navigate(-1)}
+                    onBack={()=> navigate('/', { replace: true })}
                     title={
                     <FetchLabel label="사용자 정보" actionType={Types.FETCH_USER} />
                     // <Space>
