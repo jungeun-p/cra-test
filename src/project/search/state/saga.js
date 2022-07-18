@@ -13,9 +13,10 @@ function* fetchAutoComplete({ keyword }){
     }
 }
 
-function* fetchAllHistory(){
+function* fetchAllHistory(_, page){
     const { isSuccess, data } = yield call(callApi, {
         url: '/history',
+        // params: { page }, // page number
     });
     if(isSuccess && data){
         yield put(actions.setValue('history', data));

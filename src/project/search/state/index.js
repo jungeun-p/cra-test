@@ -1,4 +1,4 @@
-import { createSetValueAction, createReducer, setValueReducer } from "../../common/redux-helper"
+import { createSetValueAction, createReducer, setValueReducer, FETCH_PAGE } from "../../common/redux-helper"
 
 export const Types = {
     SET_VALUE: 'search/SET_VALUE',
@@ -12,7 +12,10 @@ export const actions = {
         type: Types.FETCH_AUTO_COMPLETE,
         keyword
     }),
-    fetchAllHistory: () => ({ type: Types.FETCH_ALL_HISTORY }),
+    fetchAllHistory: () => ({ 
+        type: Types.FETCH_ALL_HISTORY, 
+        // [FETCH_PAGE]: 0 // page 초기화 처리 
+    }),
 }
 
 const INITIAL_STATE = {
